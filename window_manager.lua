@@ -3,9 +3,9 @@ local hs = hs
 
 hs.window.animationDuration = 0
 
-local outterGap = 1
+local outterGap = 10
 local outterDoubleGap = outterGap * 2
-local innerGap = 0
+local innerGap = 10
 
 function logFrame(s, f)
 	hs.alert.show("s=" .. s)
@@ -54,7 +54,7 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", function()
 
 	f.x = max.x + outterGap
 	f.y = max.y + outterGap
-	f.w = max.w / 2 - innerGap / 2
+	f.w = (max.w - outterDoubleGap) / 2 - innerGap / 2
 	f.h = max.h - outterDoubleGap
 	win:setFrame(f)
 
@@ -67,9 +67,9 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "L", function()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	f.x = max.x + max.w / 2 + innerGap / 2
+	f.x = (max.x + outterGap) + (max.w - outterDoubleGap) / 2 + innerGap / 2
 	f.y = max.y + outterGap
-	f.w = max.w / 2 - innerGap
+	f.w = (max.w - outterDoubleGap) / 2 - innerGap / 2
 	f.h = max.h - outterDoubleGap
 	win:setFrame(f)
 
