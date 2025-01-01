@@ -3,8 +3,33 @@ local hs = hs
 
 hs.window.animationDuration = 0
 
-local gap = 8
-local doubleGap = gap * 2
+local outterGap = 1
+local outterDoubleGap = outterGap * 2
+local innerGap = 0
+
+function logFrame(s, f)
+	hs.alert.show("s=" .. s)
+	hs.alert.show("x: " .. f.x .. " y: " .. f.y)
+	hs.alert.show("w: " .. f.w .. " h: " .. f.h)
+	print("s=" .. s)
+	print("x: " .. f.x .. " y: " .. f.y)
+	print("w: " .. f.w .. " h: " .. f.h)
+end
+
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "G", function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	local screen = win:screen()
+	local max = screen:frame()
+
+	f.x = max.x
+	f.y = max.y
+	f.w = max.w
+	f.h = max.h
+	win:setFrame(f)
+
+	logFrame("FF", f)
+end)
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F", function()
 	local win = hs.window.focusedWindow()
@@ -12,11 +37,13 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F", function()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	f.x = max.x + gap
-	f.y = max.y + gap
-	f.w = max.w - doubleGap
-	f.h = max.h - doubleGap
+	f.x = max.x + outterGap
+	f.y = max.y + outterGap
+	f.w = max.w - outterDoubleGap
+	f.h = max.h - outterDoubleGap
 	win:setFrame(f)
+
+	logFrame("F", f)
 end)
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", function()
@@ -25,11 +52,13 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", function()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	f.x = max.x + gap
-	f.y = max.y + gap
-	f.w = max.w / 2 - gap
-	f.h = max.h - doubleGap
+	f.x = max.x + outterGap
+	f.y = max.y + outterGap
+	f.w = max.w / 2 - innerGap / 2
+	f.h = max.h - outterDoubleGap
 	win:setFrame(f)
+
+	logFrame("H", f)
 end)
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "L", function()
@@ -38,11 +67,13 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "L", function()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	f.x = max.x + (max.w / 2) + gap
-	f.y = max.y + gap
-	f.w = max.w / 2 - doubleGap
-	f.h = max.h - doubleGap
+	f.x = max.x + max.w / 2 + innerGap / 2
+	f.y = max.y + outterGap
+	f.w = max.w / 2 - innerGap
+	f.h = max.h - outterDoubleGap
 	win:setFrame(f)
+
+	logFrame("L", f)
 end)
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "K", function()
@@ -51,10 +82,10 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "K", function()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	f.x = max.x + gap
-	f.y = max.y + gap
-	f.w = max.w - doubleGap
-	f.h = max.h / 2 - gap
+	f.x = max.x + outterGap
+	f.y = max.y + outterGap
+	f.w = max.w - outterDoubleGap
+	f.h = max.h / 2 - innerGap - outterGap
 	win:setFrame(f)
 end)
 
@@ -64,63 +95,63 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "J", function()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	f.x = max.x + gap
-	f.y = max.y + (max.h / 2) + gap
-	f.w = max.w - doubleGap
-	f.h = max.h / 2 - doubleGap
+	f.x = max.x + outterGap
+	f.y = max.y + (max.h / 2) + innerGap
+	f.w = max.w - outterDoubleGap
+	f.h = max.h / 2 - innerGap - outterGap
 	win:setFrame(f)
 end)
 
 -- corners
 
-hs.hotkey.bind({ "alt" }, ",", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x + gap
-	f.y = max.y + (max.h / 2) + gap
-	f.w = max.w / 2 - doubleGap
-	f.h = max.h / 2 - doubleGap
-	win:setFrame(f)
-end)
-
-hs.hotkey.bind({ "alt" }, ".", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x + (max.w / 2) + gap
-	f.y = max.y + (max.h / 2) + gap
-	f.w = max.w / 2 - doubleGap
-	f.h = max.h / 2 - doubleGap
-	win:setFrame(f)
-end)
-
-hs.hotkey.bind({ "alt", "shift" }, ",", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x + gap
-	f.y = max.y + gap
-	f.w = max.w / 2 - doubleGap
-	f.h = max.h / 2 - doubleGap
-	win:setFrame(f)
-end)
-
-hs.hotkey.bind({ "alt", "shift" }, ".", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x + (max.w / 2) + gap
-	f.y = max.y + gap
-	f.w = max.w / 2 - doubleGap
-	f.h = max.h / 2 - doubleGap
-	win:setFrame(f)
-end)
+-- hs.hotkey.bind({ "alt" }, ",", function()
+-- 	local win = hs.window.focusedWindow()
+-- 	local f = win:frame()
+-- 	local screen = win:screen()
+-- 	local max = screen:frame()
+--
+-- 	f.x = max.x + gap
+-- 	f.y = max.y + (max.h / 2) + gap
+-- 	f.w = max.w / 2 - doubleGap
+-- 	f.h = max.h / 2 - doubleGap
+-- 	win:setFrame(f)
+-- end)
+--
+-- hs.hotkey.bind({ "alt" }, ".", function()
+-- 	local win = hs.window.focusedWindow()
+-- 	local f = win:frame()
+-- 	local screen = win:screen()
+-- 	local max = screen:frame()
+--
+-- 	f.x = max.x + (max.w / 2) + gap
+-- 	f.y = max.y + (max.h / 2) + gap
+-- 	f.w = max.w / 2 - doubleGap
+-- 	f.h = max.h / 2 - doubleGap
+-- 	win:setFrame(f)
+-- end)
+--
+-- hs.hotkey.bind({ "alt", "shift" }, ",", function()
+-- 	local win = hs.window.focusedWindow()
+-- 	local f = win:frame()
+-- 	local screen = win:screen()
+-- 	local max = screen:frame()
+--
+-- 	f.x = max.x + gap
+-- 	f.y = max.y + gap
+-- 	f.w = max.w / 2 - doubleGap
+-- 	f.h = max.h / 2 - doubleGap
+-- 	win:setFrame(f)
+-- end)
+--
+-- hs.hotkey.bind({ "alt", "shift" }, ".", function()
+-- 	local win = hs.window.focusedWindow()
+-- 	local f = win:frame()
+-- 	local screen = win:screen()
+-- 	local max = screen:frame()
+--
+-- 	f.x = max.x + (max.w / 2) + gap
+-- 	f.y = max.y + gap
+-- 	f.w = max.w / 2 - doubleGap
+-- 	f.h = max.h / 2 - doubleGap
+-- 	win:setFrame(f)
+-- end)
