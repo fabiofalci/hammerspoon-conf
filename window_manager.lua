@@ -6,7 +6,7 @@ hs.window.animationDuration = 0
 local gap = 8
 local doubleGap = gap * 2
 
-hs.hotkey.bind({ "alt" }, "F", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F", function()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
 	local screen = win:screen()
@@ -19,7 +19,7 @@ hs.hotkey.bind({ "alt" }, "F", function()
 	win:setFrame(f)
 end)
 
-hs.hotkey.bind({ "alt", "shift" }, "H", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", function()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
 	local screen = win:screen()
@@ -32,7 +32,7 @@ hs.hotkey.bind({ "alt", "shift" }, "H", function()
 	win:setFrame(f)
 end)
 
-hs.hotkey.bind({ "alt", "shift" }, "L", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "L", function()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
 	local screen = win:screen()
@@ -45,7 +45,7 @@ hs.hotkey.bind({ "alt", "shift" }, "L", function()
 	win:setFrame(f)
 end)
 
-hs.hotkey.bind({ "alt", "shift" }, "K", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "K", function()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
 	local screen = win:screen()
@@ -58,7 +58,7 @@ hs.hotkey.bind({ "alt", "shift" }, "K", function()
 	win:setFrame(f)
 end)
 
-hs.hotkey.bind({ "alt", "shift" }, "J", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "J", function()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
 	local screen = win:screen()
@@ -70,6 +70,8 @@ hs.hotkey.bind({ "alt", "shift" }, "J", function()
 	f.h = max.h / 2 - doubleGap
 	win:setFrame(f)
 end)
+
+-- corners
 
 hs.hotkey.bind({ "alt" }, ",", function()
 	local win = hs.window.focusedWindow()

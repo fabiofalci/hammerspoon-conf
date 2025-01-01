@@ -1,9 +1,9 @@
 require("shortcuts")
 require("raycast")
--- require("window_manager")
+require("window_manager")
 
----@diagnostic disable-next-line: undefined-global
 local hs = hs
+---@diagnostic disable-next-line: undefined-global
 
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
