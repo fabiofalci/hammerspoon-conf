@@ -44,4 +44,19 @@ function window_manager_functions.maximize()
 	return f
 end
 
+function window_manager_functions.leftHalf()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	local screen = win:screen()
+	local max = screen:frame()
+
+	f.x = max.x + outterGap
+	f.y = max.y + outterGap
+	f.w = (max.w - doubleOutterGap) / 2 - innerGap / 2
+	f.h = max.h - doubleOutterGap
+	win:setFrame(f)
+
+	return f
+end
+
 return window_manager_functions

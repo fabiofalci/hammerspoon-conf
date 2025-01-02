@@ -23,33 +23,11 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "G", function()
 end)
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x + outterGap
-	f.y = max.y + outterGap
-	f.w = max.w - outterDoubleGap
-	f.h = max.h - outterDoubleGap
-	win:setFrame(f)
-
-	logFrame("F", f)
+	window_manager_functions.maximize()
 end)
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x + outterGap
-	f.y = max.y + outterGap
-	f.w = (max.w - outterDoubleGap) / 2 - innerGap / 2
-	f.h = max.h - outterDoubleGap
-	win:setFrame(f)
-
-	logFrame("H", f)
+	window_manager_functions.leftHalf()
 end)
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "L", function()
