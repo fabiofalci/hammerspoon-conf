@@ -1,6 +1,6 @@
 require("shortcuts")
 require("raycast")
--- require("window_manager")
+require("window_manager")
 
 ---@diagnostic disable-next-line: undefined-global
 local hs = hs
