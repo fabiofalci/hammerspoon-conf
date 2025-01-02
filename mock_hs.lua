@@ -1,7 +1,6 @@
 ---@diagnostic disable: unused-local
 hs = {
 	window = {
-		animationDuration = 0,
 
 		focusedWindow = function()
 			return {
@@ -20,8 +19,8 @@ hs = {
 					return {
 						frame = function(s)
 							return {
-								x = 100,
-								y = 200,
+								x = 0,
+								y = 0,
 								w = 300,
 								h = 350,
 							}
