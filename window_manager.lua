@@ -1,3 +1,5 @@
+local window_manager_functions = require("window_manager_functions")
+
 ---@diagnostic disable-next-line: undefined-global
 local hs = hs
 
@@ -17,18 +19,7 @@ function logFrame(s, f)
 end
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "G", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x
-	f.y = max.y
-	f.w = max.w
-	f.h = max.h
-	win:setFrame(f)
-
-	logFrame("FF", f)
+	window_manager_functions.mmaximize()
 end)
 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F", function()
