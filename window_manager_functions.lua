@@ -8,8 +8,9 @@ local innerGap = 10
 
 local outterDoubleGap = outterGap * 2
 
-function window_manager_functions.setOutterGap(gap)
-	outterGap = gap
+function window_manager_functions.setGaps(oGap, iGap)
+	outterGap = oGap
+	innerGap = iGap
 	outterDoubleGap = outterGap * 2
 end
 
