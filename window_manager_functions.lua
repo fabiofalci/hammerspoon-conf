@@ -8,9 +8,9 @@ local innerGap = 10
 
 local doubleOutterGap = outterGap * 2
 
-function window_manager_functions.setGaps(oGap, iGap)
-	outterGap = oGap
-	innerGap = iGap
+function window_manager_functions.setGaps(outGap, inGap)
+	outterGap = outGap
+	innerGap = inGap
 	doubleOutterGap = outterGap * 2
 end
 
@@ -52,7 +52,7 @@ function window_manager_functions.leftHalf()
 
 	f.x = max.x + outterGap
 	f.y = max.y + outterGap
-	f.w = (max.w - doubleOutterGap) / 2 - innerGap / 2
+	f.w = (max.w - doubleOutterGap) // 2 - innerGap // 2
 	f.h = max.h - doubleOutterGap
 	win:setFrame(f)
 
