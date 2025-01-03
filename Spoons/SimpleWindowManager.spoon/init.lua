@@ -1,20 +1,37 @@
-local window_manager_functions = {}
+--- === SimpleWindowManager ===
+---
+--- A simple window manager Spoon for Hammerspoon
+---
+--- Download: [https://github.com/fabiofalci/hammerspoon-conf/Spoons/SimpleWindowManager.spoon](https://github.com/fabiofalci/hammerspoon-conf/Spoons/SimpleWindowManager.spoon)
 
----@diagnostic disable-next-line: undefined-global
-local hs = hs
+local obj = {}
+obj.__index = obj
+
+-- Metadata
+obj.name = "Simple Window Manager"
+obj.version = "1.0"
+obj.author = "fabiofalci"
+obj.homepage = "https://github.com/fabiofalci/hammerspoon-conf/Spoons/SimpleWindowManager.spoon"
 
 local outterGap = 10
 local innerGap = 10
-
 local doubleOutterGap = outterGap * 2
 
-function window_manager_functions.setGaps(outGap, inGap)
+function obj:bindHotkeys(mapping)
+	local def = {
+		maximize = hs.fnutils.partial(self.maximize, self),
+		mmaximize = hs.fnutils.partial(self.mmaximize, self),
+	}
+	hs.spoons.bindHotkeysToSpec(def, mapping)
+end
+
+function obj:setGaps(outGap, inGap)
 	outterGap = outGap
 	innerGap = inGap
 	doubleOutterGap = outterGap * 2
 end
 
-function window_manager_functions.mmaximize()
+function obj:mmaximize()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
 	local screen = win:screen()
@@ -29,7 +46,7 @@ function window_manager_functions.mmaximize()
 	return f
 end
 
-function window_manager_functions.maximize()
+function obj:maximize()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
 	local screen = win:screen()
@@ -44,7 +61,7 @@ function window_manager_functions.maximize()
 	return f
 end
 
-function window_manager_functions.leftHalf()
+function leftHalf()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
 	local screen = win:screen()
@@ -59,4 +76,4 @@ function window_manager_functions.leftHalf()
 	return f
 end
 
-return window_manager_functions
+return obj

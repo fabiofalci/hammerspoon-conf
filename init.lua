@@ -1,6 +1,5 @@
 require("shortcuts")
 require("raycast")
-require("window_manager")
 
 ---@diagnostic disable-next-line: undefined-global
 local hs = hs
@@ -22,6 +21,12 @@ if caffeine then
 	caffeine:setClickCallback(caffeineClicked)
 	setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
+
+hs.loadSpoon("SimpleWindowManager")
+spoon.SimpleWindowManager:bindHotkeys({
+	maximize = { { "cmd", "alt", "ctrl" }, "F" },
+	mmaximize = { { "cmd", "alt", "ctrl" }, "G" },
+})
 
 -- Reload confirmation
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "R", function()
