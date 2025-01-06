@@ -61,7 +61,7 @@ function obj:maximize()
 	return f
 end
 
-function leftHalf()
+function obj:leftHalf()
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
 	local screen = win:screen()
