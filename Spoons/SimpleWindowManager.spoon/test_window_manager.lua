@@ -2,11 +2,17 @@ require("mock_hs")
 local windowManager = require("init")
 
 describe("window_manager_full_screen", function()
+	before_each(function()
+		hs.window.maxWidth = 300
+		hs.window.maxHeight = 351
+	end)
+
 	it("should full full screen view", function()
+		hs.window.maxWidth = 100
 		local frame = windowManager:mmaximize()
 		assert.is.equal(frame.x, 0)
 		assert.is.equal(frame.y, 0)
-		assert.is.equal(frame.w, 300)
+		assert.is.equal(frame.w, 100)
 		assert.is.equal(frame.h, 351)
 	end)
 

@@ -21,14 +21,15 @@ hs = {
 							return {
 								x = 0,
 								y = 0,
-								w = 300,
-								h = 351,
+								w = hs.window.maxWidth or 300,
+								h = hs.window.maxHeight,
 							}
 						end,
 					}
 				end,
 			}
 		end,
-		lastFrame = nil,
+		maxWidth = 300,
+		maxHeight = 351,
 	},
 }
