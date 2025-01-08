@@ -82,7 +82,7 @@ function obj:rightHalf()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	f.x = max.x + outterGap + max.w // 2
+	f.x = max.x + outterGap + max.w // 2 - innerGap // 2
 	f.y = max.y + outterGap
 	f.w = (max.w - doubleOutterGap) // 2 - innerGap // 2
 	f.h = max.h - doubleOutterGap
