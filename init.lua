@@ -23,9 +23,12 @@ if caffeine then
 end
 
 hs.loadSpoon("SimpleWindowManager")
+hs.window.animationDuration = 0
 spoon.SimpleWindowManager:bindHotkeys({
 	maximize = { { "cmd", "alt", "ctrl" }, "F" },
 	mmaximize = { { "cmd", "alt", "ctrl" }, "G" },
+	leftHalf = { { "cmd", "alt", "ctrl" }, "H" },
+	rightHalf = { { "cmd", "alt", "ctrl" }, "L" },
 })
 
 -- Reload confirmation

@@ -21,6 +21,8 @@ function obj:bindHotkeys(mapping)
 	local def = {
 		maximize = hs.fnutils.partial(self.maximize, self),
 		mmaximize = hs.fnutils.partial(self.mmaximize, self),
+		leftHalf = hs.fnutils.partial(self.leftHalf, self),
+		rightHalf = hs.fnutils.partial(self.rightHalf, self),
 	}
 	hs.spoons.bindHotkeysToSpec(def, mapping)
 end
