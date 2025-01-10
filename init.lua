@@ -1,5 +1,6 @@
 require("shortcuts")
 require("raycast")
+require("menubars")
 
 ---@diagnostic disable-next-line: undefined-global
 local hs = hs

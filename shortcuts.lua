@@ -7,3 +7,11 @@ hs.hotkey.bind({ "option" }, "F1", function()
 	end, { "--profile-directory=Default" })
 	t:start()
 end)
+
+hs.hotkey.bind({ "option" }, "F2", function()
+	local folder = hs.dialog.chooseFileOrFolder("Select git folder", "/Users/fabio/p/", false, true, false)
+	if folder and folder["1"] then
+		print('alacritty -e sh -c "lazygit -p ' .. folder["1"] .. '"')
+		hs.execute('alacritty -e sh -c "lazygit -p ' .. folder["1"] .. '"', true)
+	end
+end)
