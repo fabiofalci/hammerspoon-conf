@@ -15,3 +15,8 @@ hs.hotkey.bind({ "option" }, "F2", function()
 		hs.execute('alacritty -e sh -c "lazygit -p ' .. folder["1"] .. '"', true)
 	end
 end)
+
+hs.hotkey.bind({ "option" }, "F3", function()
+	hs.execute("~/.config/dotFiles-private/bash/disable-pihole.sh")
+	hs.alert.show("Disable pihole: success")
+end)
